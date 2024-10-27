@@ -5,7 +5,8 @@
       "app": ["./src/app"],
       "styles": ["./src/styles"],
       "components": ["./src/app/components"],
-      "store": ["./src/app/store"]
+      "store": ["./src/app/store"],
+      "configs": ["./src/app/configs"]
     }
   }
 }
