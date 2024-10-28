@@ -1,38 +1,21 @@
-import { useSelector, useDispatch } from "react-redux";
-import logo from "./logo.svg";
+import { useSelector } from "react-redux";
 import "styles/App.css";
 import { selectTheme } from "store/themeSlice";
-import { toggleTheme } from "store/themeSlice";
-import { styled } from "@mui/material/styles";
-import Theme from "./components/Theme";
+import Theme from "components/Theme";
+import Dashboard from "pages/main";
+import history from "components/history";
+import { Routes, BrowserRouter, Route } from "react-router-dom";
 
-const Root = styled("div")(({ theme }) => ({
-  color: theme.palette.primary.main,
-}));
 function App() {
   const mainTheme = useSelector(selectTheme);
-  const dispatch = useDispatch();
   return (
     <Theme theme={mainTheme} direction="ltr">
-      <Root>
-        <div className="App rounded-8 w-full mb-64">
-          <header className="App-header">
-            <img src={logo} className="App-logo mb-120" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-          <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button>
-        </div>
-      </Root>
+      <BrowserRouter navigator={history}>
+        <Routes>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/main" element={<Dashboard />}></Route>
+        </Routes>
+      </BrowserRouter>
     </Theme>
   );
 }
