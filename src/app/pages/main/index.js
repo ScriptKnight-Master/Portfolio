@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import logo from "../../logo.svg";
+import logo from "./logo.svg";
 import "styles/App.css";
 import { toggleTheme } from "store/themeSlice";
 import { styled } from "@mui/material/styles";

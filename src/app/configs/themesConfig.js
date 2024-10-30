@@ -1,6 +1,64 @@
 import { Dark, skyBlue } from "components/colors";
 import { blueGrey } from "@mui/material/colors";
 
+export const portfolioThemeLight = {
+  palette: {
+    mode: "light",
+    common: {
+      black: "rgb(17, 24, 39)",
+      white: "rgb(255, 255, 255)",
+    },
+    primary: {
+      light: "#64748b",
+      main: "#1e293b",
+      dark: "#0f172a",
+      border: Dark[400],
+    },
+    secondary: {
+      light: "#818cf8",
+      main: "#4f46e5",
+      dark: "#3730a3",
+    },
+    background: {
+      paper: "#FFFFFF",
+      default: "#f1f5f9",
+    },
+    error: {
+      light: "#ffcdd2",
+      main: "#f44336",
+      dark: "#b71c1c",
+    },
+  },
+};
+export const portfolioThemeDark = {
+  palette: {
+    mode: "dark",
+    common: {
+      black: "rgb(17, 24, 39)",
+      white: "rgb(255, 255, 255)",
+    },
+    primary: {
+      light: "#64748b",
+      main: "#1e293b",
+      dark: "#0f172a",
+      border: "white",
+    },
+    secondary: {
+      light: "#818cf8",
+      main: "#4f46e5",
+      dark: "#3730a3",
+    },
+    background: {
+      paper: "#FFFFFF",
+      default: "#f1f5f9",
+    },
+    error: {
+      light: "#ffcdd2",
+      main: "#f44336",
+      dark: "#b71c1c",
+    },
+  },
+};
 export const lightPaletteText = {
   primary: "rgb(17, 24, 39)",
   secondary: "rgb(107, 114, 128)",

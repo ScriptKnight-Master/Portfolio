@@ -1,16 +1,12 @@
 import { createTheme } from "@mui/material/styles";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import { portfolioThemeLight, portfolioThemeDark } from "configs/themesConfig";
 const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-  },
+  portfolio: portfolioThemeLight,
 });
 
 const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
+  portfolio: portfolioThemeDark,
 });
 
 // Async thunk to fetch theme from the server
