@@ -112,9 +112,7 @@ function Dashboard() {
   });
   return (
     <Root>
-      <button onClick={handleToggleView}>
-        {isCardView ? "Back to Full Page" : "Switch to Card View"}
-      </button>
+      <button onClick={handleToggleView}>Back</button>
 
       {isCardView ? (
         <Swiper effect={"cards"} grabCursor={true} modules={[EffectCards]}>
