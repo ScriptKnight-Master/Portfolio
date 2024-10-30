@@ -3,11 +3,8 @@ import { styled } from "@mui/material/styles";
 import { useSpring, animated } from "react-spring";
 // import { useDispatch } from "react-redux";
 // import { toggleTheme } from "store/themeSlice";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { EffectCards } from "swiper/modules";
+import { IconContext } from "react-icons";
+import { BsWindows } from "react-icons/bs";
 import "swiper/css/bundle";
 const Root = styled("div")(({ theme }) => ({
   color: theme.palette.primary.main,
@@ -34,18 +31,26 @@ const Root = styled("div")(({ theme }) => ({
     scrollbarColor: "green transparent",
     scrollbarWidth: "thin",
   },
+  "& .HomeIcon": {
+    color: theme.portfolio.palette.primary.border,
+    fontSize: "1rem",
+    transitionDuration: "0.7s",
+    cursor: "pointer",
+  },
+  "& .HomeIcon:hover": {
+    color: "#00aaf7",
+    transitionDuration: "0.7s",
+  },
 }));
 
-const Home = ({ background }) => {
-  console.log(background);
+const Home = () => {
   return (
-    <div
-      className="themeborder md:size-full frame-main-m frame-main relative h-full overflow-hidden rounded border border-solid transition-all duration-700"
-      style={{ background: background }}
-    >
+    <div className="themeborder md:size-full frame-main-m frame-main relative h-full overflow-hidden rounded border border-solid transition-all duration-700">
       <header className="themeborder z-30 grid grid-cols-subgrid grid-rows-1 border-b md:grid-rows-subgrid md:border-b-0 md:border-r glossy [grid-area:header]">
         <div className="themeborder flex items-center justify-center border-r md:border-b md:border-r-0">
-          <span>asdf</span>
+          <IconContext.Provider value={{ className: "HomeIcon" }}>
+            <BsWindows />
+          </IconContext.Provider>
         </div>
         <nav className="hidden items-center justify-center md:flex">
           <ul>
@@ -59,7 +64,7 @@ const Home = ({ background }) => {
       </header>
       <div className="themeborder grid grid-cols-3 items-center gap-4 border-b border-base-300 px-10 glossy [grid-area:top] md:grid">
         <div></div>
-        <div>VVVVVV</div>
+        <div>&lt;ScriptKnight.Master/&gt;</div>
         <div>VVVV</div>
       </div>
       <div className="scrollbar-custom relative overflow-x-hidden overflow-y-scroll [grid-area:content] lenis">
@@ -98,36 +103,17 @@ const Home = ({ background }) => {
 };
 function Dashboard() {
   //   const dispatch = useDispatch();
-  const [isCardView, setIsCardView] = useState(false);
-  const handleToggleView = () => {
-    console.log(isCardView, "isCardViewChange");
-    setIsCardView(!isCardView);
-  };
-  console.log(isCardView);
-  const cards = ["red", "blue", "white"]; // Example card items
+
   // Animation for shrinking page to card
   const shrinkAnim = useSpring({
-    transform: isCardView ? "scale(0.3)" : "scale(1)",
-    opacity: isCardView ? 0.7 : 1,
+    transform: "scale(1)",
+    opacity: 1,
   });
   return (
     <Root>
-      <button onClick={handleToggleView}>Back</button>
-
-      {isCardView ? (
-        <Swiper effect={"cards"} grabCursor={true} modules={[EffectCards]}>
-          {cards.map((card) => (
-            <SwiperSlide key={card}>
-              <Home background={card} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      ) : (
-        <animated.div style={shrinkAnim} className="fullPageView">
-          <Home />
-        </animated.div>
-      )}
-      {/* <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button> */}
+      <animated.div style={shrinkAnim} className="fullPageView">
+        <Home />
+      </animated.div>
     </Root>
   );
 }
